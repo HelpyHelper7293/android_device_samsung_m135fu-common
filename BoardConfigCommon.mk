@@ -13,13 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-COMMON_PATH := device/samsung/a21s-common
+COMMON_PATH := device/samsung/m135fu-common
 
 ## Include path
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
 ## Inherit proprietary vendor configuartion
-include vendor/samsung/a21s-common/BoardConfigVendor.mk
+include vendor/samsung/m135fu-common/BoardConfigVendor.mk
 
 ## Architecture
 TARGET_ARCH := arm64
@@ -61,7 +61,8 @@ BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
-BOARD_KERNEL_CMDLINE += androidboot.hardware=exynos850 androidboot.selinux=enforcing loop.max_part=7
+BOARD_KERNEL_CMDLINE += androidboot.hardware=exynos850 androidboot.selinux=permissive loop.max_part=7
+## BOARD_KERNEL_CMDLINE += androidboot.hardware=exynos850 androidboot.selinux=enforcing loop.max_part=7
 
 ## Camera
 $(call soong_config_set,samsungCameraVars,usage_64bit,true)
@@ -70,9 +71,10 @@ $(call soong_config_set,samsungCameraVars,usage_64bit,true)
 TARGET_SCREEN_DENSITY := 280
 
 ## Dynamic Partitions
-BOARD_SUPER_PARTITION_SIZE := 5536481280
+## UNSURE: Confusion between BOARD_SUPER_PARTITION_SIZE and BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE
+BOARD_SUPER_PARTITION_SIZE := 6308233216
 BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
-BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 5530000000
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 6308233216
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     system \
     vendor \
@@ -118,10 +120,10 @@ DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 
 ## Partitions
-BOARD_BOOTIMAGE_PARTITION_SIZE := 37748736
+BOARD_BOOTIMAGE_PARTITION_SIZE := 46137344
 BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608
-BOARD_FLASH_BLOCK_SIZE := 4096
+BOARD_FLASH_BLOCK_SIZE := 2048
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 55574528
 
 BOARD_USES_METADATA_PARTITION := true
