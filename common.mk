@@ -15,6 +15,11 @@
 #
 
 COMMON_PATH := device/samsung/m135fu-common
+PRODUCT_USES_PREBUILT_MAINLINE_MODULES := false
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
+PRODUCT_BUILD_MAINLINE_MODULES := false
+PRODUCT_SYSTEM_SERVER_JARS := framework
+PRODUCT_BOOT_JARS := framework
 
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/samsung/m135fu-common/m135fu-common-vendor.mk)
@@ -157,9 +162,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
 # Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0-service.samsung \
-    libkeymaster4_1support.vendor:64
+#PRODUCT_PACKAGES += \
+#    android.hardware.keymaster@4.0-service.samsung \
+#    libkeymaster4_1support.vendor:64
 
 PRODUCT_PACKAGES += \
     libcrypto-tm \
@@ -310,33 +315,33 @@ PRODUCT_PACKAGES += \
     vndservicemanager
 
 # NFC and Secure Element packages
-PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
-    NfcNci \
-    Tag
+#PRODUCT_PACKAGES += \
+#    com.android.nfc_extras \
+#    NfcNci \
+#    Tag
 
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
-    $(COMMON_PATH)/configs/nfc/libnfc-sec-vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
+#PRODUCT_COPY_FILES += \
+#    $(COMMON_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
+#    $(COMMON_PATH)/configs/nfc/libnfc-sec-vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
 
 # NFC Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hce/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hceese/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesim/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesimese/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hce/android.hardware.nfc.hcef.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hceese/android.hardware.nfc.hcef.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesim/android.hardware.nfc.hcef.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesimese/android.hardware.nfc.hcef.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hce/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hceese/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesim/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesimese/android.hardware.nfc.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hce/com.android.nfc_extras.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hceese/com.android.nfc_extras.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesim/com.android.nfc_extras.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesimese/com.android.nfc_extras.xml \
+#PRODUCT_COPY_FILES += \
+#    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hce/#android.hardware.nfc.hce.xml \
+#    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hceese/#android.hardware.nfc.hce.xml \
+#    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesim/#android.hardware.nfc.hce.xml \
+#    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesimese/#android.hardware.nfc.hce.xml \
+#    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hce/#android.hardware.nfc.hcef.xml \
+#    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hceese/#android.hardware.nfc.hcef.xml \
+#    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesim/#android.hardware.nfc.hcef.xml \
+#    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesimese/#android.hardware.nfc.hcef.xml \
+#    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hce/#android.hardware.nfc.xml \
+#    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hceese/#android.hardware.nfc.xml \
+#    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesim/#android.hardware.nfc.xml \
+#    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesimese/#android.hardware.nfc.xml \
+#    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hce/#com.android.nfc_extras.xml \
+#    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hceese/#com.android.nfc_extras.xml \
+#    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesim/#com.android.nfc_extras.xml \
+#    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesimese/#com.android.nfc_extras.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hce/com.nxp.mifare.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hceese/com.nxp.mifare.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_hcesim/com.nxp.mifare.xml \
@@ -359,3 +364,22 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
 PRODUCT_CFI_INCLUDE_PATHS += hardware/samsung_slsi/scsc_wifibt/wpa_supplicant_lib
+
+PRODUCT_DEX_PREOPT_DEFAULT := false
+PRODUCT_PACKAGES_REMOVE += hostapd
+PRODUCT_PACKAGES_REMOVE += \
+    android.net.ipsec.ike \
+    com.android.ipsec \
+    android.net.ipsec.ike.stubs \
+    android.net.ipsec.ike.stubs.module_lib \
+    android.net.ipsec.ike.stubs.module_lib.from-text \
+    framework-bluetooth.stubs.module_lib.from-text \
+    framework-bluetooth.stubs.module_lib \
+    com.android.ipsec \
+    com.android.bluetooth \
+    framework-permission-s.stubs.module_lib.from-text \
+    framework-permission-s.stubs.module_lib \
+    com.android.permission \
+    framework-pdf \
+    framework-pdf-v \
+    framework-mediaprovider
